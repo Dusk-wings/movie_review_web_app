@@ -1,0 +1,65 @@
+.no {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: justify;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 80vw; */
+  /* max-width: 500px; */
+  height: 95vh;
+}
+
+.ori {
+  width: 80vw;
+}
+
+.review-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98vw;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.box-image {
+  object-fit: contain;
+}
+
+.book-title {
+  font-weight: 700;
+}
+
+.entry-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+}
+.entry {
+  margin-top: 25px;
+  padding: 25px;
+  border: 1px dashed;
+  border-radius: 10px;
+}
+
+.form input {
+  width: 100%;
+}
+
+
+.btn-group-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

@@ -1,0 +1,107 @@
+<%- include('./partials/header.ejs') %>
+
+<% if (locals.error) { %>
+  <div class="alert alert-danger" style="justify-self:flex-start;">
+    <p><%= error %></p>
+  </div>
+<% } %>
+
+<div class="form">
+  <% if (locals.data) { %>
+  <form action="/alter" method="post" class="form-control ori">
+    <div class="mb-3">
+      <label for="book_title" class="form-label">Title of the Book : </label>
+      <input
+        type="text"
+        class="form-control"
+        name="book_title"
+        id="title"
+        value="<%= data.book_title %>"
+        autofocus
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title of the Review : </label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        id="title"
+        value="<%= data.review_title %>"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="genres" class="form-label">Select the Genre : </label>
+      <select
+        id="genreSelect"
+        class="form-select"
+        aria-label="Default select example"
+        name="genres"
+      >
+      <% let genres = ["Classic", "Fantasy", "Thriller", "Romance", "Mystery" ,"Science-Fiction","Historical" ]; %>
+        <% for (let index = 0; index < genres.length; index++) { %>
+          <option value="<%=(genres[index]).toLowerCase()%>" <%= data.genres == (genres[index]).toLowerCase() ? "selected" : "" %>><%= genres[index]%></option>
+        <% } %>
+        <!-- Add more genres here -->
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="Identity"
+        >Identity Type</label
+      >
+      <select class="form-select" name="identity" id="inputGroupSelect01">
+        <% let options = ["ISBN", "OCLC", "LCCN", "OLID", "ID"]; %>
+        <% for (let index = 0; index < options.length; index++) { %>
+          <option value="<%=options[index]%>" <%= data.identity_type == options[index] ? "selected" : "" %>><%= options[index]%></option>
+        <% } %>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Value : </span>
+      <input
+        type="text"
+        name="value"
+        class="form-control"
+        value="<%= data.value%>"
+        aria-label="Value"
+        required
+        autocomplete="off"
+      />
+      <span class="input-group-text">Rating</span>
+      <select id="quantity" name="rating" class="form-control">
+        <% let rating = [1, 2, 3, 4, 5]; %>
+        <% for (let index = 0; index < rating.length; index++) { %>
+          <option value="<%=rating[index]%>" <%= data.rating == rating[index] ? "selected" : "" %>><%= rating[index]%></option>
+        <% } %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="review" class="form-label">Review : </label>
+      <textarea
+        class="form-control"
+        name="review"
+        id="review"
+        rows="3"
+        required
+      ><%= data.review %></textarea>
+    </div>
+    <input type="hidden" value="<%= data.id %>" name="editId" >
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary mb-3">Update Review</button>
+    </div>
+  <% } else { %>
+    <div class="no">
+        <h1>Opps 🤔.. , Gues you got in the wrong part of the world . </h1>
+    </div>
+<% } %>
+  
+  </form>
+</div>
+
+
+<%- include('./partials/footer.ejs') %>

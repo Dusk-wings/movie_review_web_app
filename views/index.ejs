@@ -1,0 +1,84 @@
+<%- include('./partials/header.ejs') %>
+<main>
+  <% if(locals.books){ %>
+  <div class="review-section">
+    <% for (let index = 0; index < books.length; index++) { %>
+    <div class="card mb-3" style="max-width: 970px; min-width: 100px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="<%= books[index].imageurl %>"
+            class="img-fluid rounded-start box-image"
+            alt="<%= books[index].title %> image"
+            style="height: 100%; object-fit: cover"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <p class="text-body-secondary">
+              <small><u><%= books[index].username%></u></small>
+            </p>
+            <h3
+              class="card-title"
+              style="font-family: 'Times New Roman', Times, serif"
+            >
+              <b><i>" <%= books[index].review_title %> "</i></b>
+            </h3>
+            <br />
+            <h5 class="card-title book-title">
+              <span class="text-body-secondary">Book :</span> <%=
+              books[index].book_title %>
+            </h5>
+            <!-- <br /> -->
+            <h6 class="text-body-secondary">
+              Rating :
+              <span style="color: rgba(235, 201, 10, 0.897)"
+                ><%= books[index].rating %></span
+              >
+              / 5
+            </h6>
+            <br />
+            <% books[index].review.forEach(review => { %>
+            <p class="card-text"><%= review %></p>
+
+            <% }); %>
+            <p class="card-text">
+              <small class="text-body-secondary"
+                >Last edited on : <%= books[index].date %></small
+              >
+            </p>
+            <% if (books[index].isAllowed == true) { %>
+            <div style="display: flex; gap: 20px">
+              <form action="/edit" method="post">
+                <input
+                  type="hidden"
+                  name="reviewID"
+                  value="<%= books[index].id %>"
+                />
+                <button class="btn btn-primary" type="submit">Edit</button>
+              </form>
+              <!-- <a href="/edit" class="btn btn-primary">Edit</a> -->
+              <form action="/DELETE" method="post">
+                <input
+                  type="hidden"
+                  name="deleteID"
+                  value="<%= books[index].id %>"
+                />
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+            <% } else {%> <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } %>
+  </div>
+  <% } else { %>
+  <div class="no">
+    <h1>No Internet connection 🌎.</h1>
+    <h1>No Data to show.</h1>
+  </div>
+  <% } %>
+</main>

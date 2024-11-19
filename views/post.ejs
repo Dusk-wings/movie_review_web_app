@@ -1,0 +1,101 @@
+<%- include('./partials/header.ejs') %>
+<% if (locals.error) { %>
+  <div class="alert alert-danger" style="justify-self:flex-start;">
+    <p><%= error %></p>
+  </div>
+<% } %>
+
+<div class="form">
+  <form action="/add" method="post" class="form-control ori">
+    <div class="mb-3">
+      <label for="book_title" class="form-label">Title of the Book Review : </label>
+      <input
+        type="text"
+        class="form-control"
+        name="book_title"
+        id="title"
+        placeholder="Harry Potter and the Sorcerer's Stone"
+        autofocus
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title of the Book Review : </label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        id="title"
+        placeholder="Really nice"
+        autofocus
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="genres" class="form-label">Select the Genre : </label>
+      <select
+        id="genreSelect"
+        class="form-select"
+        aria-label="Default select example"
+        name="genres"
+      >
+        <option value="classic" selected>Classic</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="thriller">Thriller</option>
+        <option value="romance">Romance</option>
+        <option value="mystery">Mystery</option>
+        <option value="science-fiction">Science Fiction</option>
+        <option value="historical">Historical</option>
+        <!-- Add more genres here -->
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="Identity"
+        >Identity Type</label
+      >
+      <select class="form-select" name="identity" id="inputGroupSelect01">
+        <option selected value="ISBN">ISBN</option>
+        <option value="OCLC">OCLC</option>
+        <option value="LCCN">LCCN</option>
+        <option value="OLID ">OLID</option>
+        <option value="ID">ID</option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Value : </span>
+      <input
+        type="text"
+        name="value"
+        class="form-control"
+        placeholder="0545582881 -> ISBN of Harry Potter"
+        aria-label="Value"
+        required
+        autocomplete="off"
+      />
+      <span class="input-group-text">Rating</span>
+      <select id="quantity" name="rating" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option selected value="5">5</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="review" class="form-label">Review : </label>
+      <textarea
+        class="form-control"
+        name="review"
+        id="review"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary mb-3">Add Review</button>
+    </div>
+  </form>
+</div>
